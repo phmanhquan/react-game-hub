@@ -13,9 +13,14 @@ export interface Game {
   rating: number;
 }
 
+// undefined: the absence of a value
+// null: the international absence of value
+
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  // genre: Genre | null;
+  genreId?: number;
+  // platform: Platform | null;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 }
@@ -28,8 +33,8 @@ const useGame = (gameQuery: GameQuery) =>
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          genres: gameQuery.genre?.id,
-          parent_platforms: gameQuery.platform?.id,
+          genres: gameQuery.genreId,
+          parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
           page: pageParam,
