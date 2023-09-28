@@ -1,8 +1,8 @@
 import APIClient, { FetchResponse } from "../services/api-client";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { Platform } from "./usePlatforms";
-import { Genre } from "./useGenres";
 import ms from "ms";
+import { GameQuery } from "../store";
 
 export interface Game {
   id: number;
@@ -12,18 +12,6 @@ export interface Game {
   metacritic: number;
   rating_top: number;
   rating: number;
-}
-
-// undefined: the absence of a value
-// null: the international absence of value
-
-export interface GameQuery {
-  // genre: Genre | null;
-  genreId?: number;
-  // platform: Platform | null;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
 }
 
 const apiClient = new APIClient<Game>("/games");
