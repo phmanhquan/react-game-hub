@@ -5,6 +5,7 @@ import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import gerCroppedImageUrl from "../services/mage-url";
 import Emoji from "./Emoji";
+import { Link } from "react-router-dom";
 
 interface Props {
   game: Game;
@@ -12,7 +13,7 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <Card>
+    <Card _hover={{ transform: "scale(1.03)" }}>
       <Image src={gerCroppedImageUrl(game.background_image)}></Image>
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={3}>
@@ -22,7 +23,7 @@ const GameCard = ({ game }: Props) => {
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
         <Heading fontSize="2xl">
-          {game.name}
+          <Link to={"/games/" + game.slug}>{game.name}</Link>
           <Emoji rating={game.rating_top}></Emoji>
         </Heading>
       </CardBody>
