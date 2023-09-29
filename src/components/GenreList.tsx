@@ -1,4 +1,4 @@
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import gerCroppedImageUrl from "../services/mage-url";
 import {
   Button,
