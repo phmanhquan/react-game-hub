@@ -1,4 +1,13 @@
-import { Box, Flex, HStack, Heading, List, ListItem } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  GridItem,
+  HStack,
+  Heading,
+  List,
+  ListItem,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import useTrailers from "../hooks/useTrailers";
 
 interface Props {
@@ -14,21 +23,21 @@ const GameTrailer = ({ gameId }: Props) => {
   const trailers = data?.results;
 
   return (
-    <List display="flex" flexDirection="column" alignItems="center">
+    <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={6} padding="10px">
       {data?.results?.map((trailer) => (
-        <ListItem key={trailer.id} paddingY="5px">
-          <Box maxWidth="700px">
-            <Heading>{trailer.name}</Heading>
-            <video
-              key={trailer.id}
-              src={trailer.data[480]}
-              poster={trailer.preview}
-              controls
-            />
-          </Box>
-        </ListItem>
+        <Box padding="10px">
+          <Heading padding="10px" fontSize="xl">
+            {trailer.name}
+          </Heading>
+          <video
+            key={trailer.id}
+            src={trailer.data[480]}
+            poster={trailer.preview}
+            controls
+          />
+        </Box>
       ))}
-    </List>
+    </SimpleGrid>
   );
 };
 

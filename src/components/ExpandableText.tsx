@@ -7,7 +7,7 @@ interface Props {
 
 const ExpandableText = ({ children }: Props) => {
   const [expanded, setExpanded] = useState(false);
-  const limit = 300;
+  const limit = 500;
 
   if (!children) return null;
 
@@ -15,7 +15,7 @@ const ExpandableText = ({ children }: Props) => {
 
   const summary = expanded ? children : children.substring(0, limit) + "...";
   return (
-    <Text>
+    <Text padding="10px">
       {summary}
       <Button
         size="xs"
